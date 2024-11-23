@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  @apply text-white;
+  font-family: Inter, sans-serif;
+  font-feature-settings:
+    'liga' 1,
+    'calt' 1; /* fix for Chrome */
+}
+@supports (font-variation-settings: normal) {
+  :root {
+    font-family: InterVariable, sans-serif;
+  }
+}
+
+body {
+  background-color: #001100;
+}
+
+h1 {
+  @apply text-5xl font-bold;
+}
+
+h2 {
+    @apply text-lg;
+}
+
+span {
+    @apply font-extralight;
+}
+
+.content {
+  @apply mx-auto min-h-screen max-w-screen-xl px-6 py-12 font-sans md:px-12 md:py-20 lg:px-24 lg:py-0;
+}
+
+.introduction {
+  @apply lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-1/2 lg:flex-col lg:justify-between lg:py-24;
+}
+
+.glow {
+  background: linear-gradient(45deg, #0053ac, #00a500);
+  opacity: 20%;
+  width: 30rem;
+  height: 30rem;
+  border-radius: 50%;
+  filter: blur(150rem);
+  pointer-events: none;
+  position: absolute;
+}
+
+.glowing-container {
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
