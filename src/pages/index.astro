@@ -1,9 +1,18 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from '@layouts/Layout.astro'
+import Header from '@components/Header.astro'
+import fetchApi from '@lib/strapi'
+import type Experiences from '@interfaces/experiences'
+import '@styles/base.css'
+
+const experiences = await fetchApi<Experiences[]>({
+  endpoint: 'experiences'
+})
 ---
 
-<Layout title="Welcome to Astro.">
-	<main>
-		
-	</main>
+<Layout title="Adrián Acosa Sánchez">
+  <div class="content">
+    <Header />
+    <main></main>
+  </div>
 </Layout>
