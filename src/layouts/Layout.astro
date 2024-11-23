@@ -40,25 +40,48 @@ const { title } = Astro.props
   </head>
   <body>
     <slot />
-    <div class="glow-container">
-      <div class="glow"></div>
+    <div class="light-container">
+      <div class="light"></div>
     </div>
   </body>
 </html>
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    const glow = document.querySelector('.glow') as HTMLElement
+    const light = document.querySelector('.light') as HTMLElement
 
     document.addEventListener('mousemove', (e) => {
-      // Get the current mouse coordinates
-      const mouseX = e.clientX
-      const mouseY = e.clientY
+      light.style.top = `${e.clientY}px`
+      light.style.left = `${e.clientX}px`
+    })
+  })
 
-      if (glow) {
-        // Set the blob's position to follow the mouse
-        glow.style.left = `${mouseX - glow.clientWidth / 2}px`
-        glow.style.top = `${mouseY - glow.clientHeight / 2}px`
-      }
+  document.addEventListener('DOMContentLoaded', () => {
+    const sections: NodeListOf<HTMLElement> =
+      document.querySelectorAll('section')
+    const navItems: NodeListOf<HTMLAnchorElement> =
+      document.querySelectorAll('.nav-item')
+
+    if (navItems.length > 0) {
+      navItems[0].classList.add('nav-item-selected')
+    }
+
+    window.addEventListener('scroll', () => {
+      let current: string = ''
+
+      sections.forEach((section) => {
+        const sectionTop: number = section.offsetTop
+        const sectionHeight: number = section.clientHeight
+        if (window.scrollY >= sectionTop - sectionHeight / 3) {
+          current = section.getAttribute('id') || ''
+        }
+      })
+
+      navItems.forEach((item) => {
+        item.classList.remove('nav-item-selected')
+        if (item.getAttribute('href') === `#${current}`) {
+          item.classList.add('nav-item-selected')
+        }
+      })
     })
   })
 </script>
