@@ -1,7 +1,8 @@
 ---
 import fetchApi from '@lib/strapi'
 import type HeadingInfos from '@interfaces/headingInfos'
-import { Debug } from 'astro:components'
+import { Icon } from 'astro-icon/components'
+import Navigation from '@components/Navigation.astro'
 
 const headingInfos = await fetchApi<HeadingInfos[]>({
   endpoint: 'heading-infos',
@@ -15,21 +16,20 @@ const info = headingInfos[0]
   <div>
     <h1 class="capitalize max-w-xs">{info.name}</h1>
     <h2 class="mt-3">{info.position}</h2>
-    <span class="mt-3 max-w-xs">{info.introduction}</span>
+    <p class="mt-4 max-w-xs leading-normal">{info.introduction}</p>
+    <Navigation />
   </div>
-  <nav>
-    <ul>
-      <li>
-        <a href="#about">About</a>
-      </li>
-      <li>
-        <a href="#projects">Experience</a>
-      </li>
-      <li>
-        <a href="#contact">Contact</a>
-      </li>
-    </ul>
-    <ul>
-		</ul>
-  </nav>
+  <ul class="flex mt-8 ml-1">
+    {
+      info.links.map((link) => {
+        return (
+          <li class="mr-5">
+            <a href={link.url}>
+              <Icon name={link.name} class="text-2xl" aria-label={link.name} />
+            </a>
+          </li>
+        )
+      })
+    }
+  </ul>
 </header>

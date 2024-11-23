@@ -16,7 +16,7 @@
 }
 
 body {
-  background-color: #001100;
+  background-color: #090011;
 }
 
 h1 {
@@ -27,7 +27,7 @@ h2 {
     @apply text-lg;
 }
 
-span {
+p {
     @apply font-extralight;
 }
 
@@ -40,7 +40,7 @@ span {
 }
 
 .glow {
-  background: linear-gradient(45deg, #0053ac, #00a500);
+  background: linear-gradient(45deg, #0053ac, #6800a5);
   opacity: 20%;
   width: 30rem;
   height: 30rem;
