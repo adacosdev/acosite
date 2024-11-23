@@ -1,20 +1,39 @@
 ---
 import Layout from '@layouts/Layout.astro'
 import Header from '@components/Header.astro'
-import fetchApi from '@lib/strapi'
-import type Experiences from '@interfaces/experiences'
 import '@styles/base.css'
-
-const experiences = await fetchApi<Experiences[]>({
-  endpoint: 'experiences'
-})
 ---
 
 <Layout title="Adrián Acosa Sánchez">
   <div class="content">
     <div class="lg:flex lg:justify-between lg:gap-4">
       <Header />
-      <main></main>
+      <main class="overflow-y-auto">
+        <section
+          class="h-screen"
+          id="about"
+        >
+          1
+        </section>
+        <section
+          class="h-screen"
+          id="experience"
+        >
+          2
+        </section>
+        <section
+          class="h-screen"
+          id="projects"
+        >
+          3
+        </section>
+        <section
+          class="h-screen"
+          id="contact"
+        >
+          4
+        </section>
+      </main>
     </div>
   </div>
 </Layout>
