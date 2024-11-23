@@ -1,22 +1,64 @@
 ---
+import '@styles/base.css'
 interface Props {
-	title: string;
+  title: string
 }
 
-const { title } = Astro.props;
+const { title } = Astro.props
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="description"
+      content="Astro description"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width"
+    />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="/favicon.svg"
+    />
+    <meta
+      name="generator"
+      content={Astro.generator}
+    />
+    <link
+      rel="preconnect"
+      href="https://rsms.me/"
+    />
+    <link
+      rel="stylesheet"
+      href="https://rsms.me/inter/inter.css"
+    />
+    <title>{title}</title>
+  </head>
+  <body>
+    <slot />
+    <div class="glow-container">
+      <div class="glow"></div>
+    </div>
+  </body>
 </html>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const glow = document.querySelector('.glow') as HTMLElement
+
+    document.addEventListener('mousemove', (e) => {
+      // Get the current mouse coordinates
+      const mouseX = e.clientX
+      const mouseY = e.clientY
+
+      if (glow) {
+        // Set the blob's position to follow the mouse
+        glow.style.left = `${mouseX - glow.clientWidth / 2}px`
+        glow.style.top = `${mouseY - glow.clientHeight / 2}px`
+      }
+    })
+  })
+</script>
