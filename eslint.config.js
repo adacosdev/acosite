@@ -9,10 +9,5 @@ export default [
   { languageOptions: { globals: globals.node } },
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
-  ...eslintPluginAstro.configs.recommended,
-  {
-    rules: {
-      '@typescript-eslint/triple-slash-reference': 'never'
-    }
-  }
+  ...eslintPluginAstro.configs.recommended
 ]
