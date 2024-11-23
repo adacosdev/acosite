@@ -1,10 +1,13 @@
 ---
-import NavItem from "@components/NavItem.astro"
+import NavItem from '@components/NavItem.astro'
 ---
 
 <nav>
-  <ul class="mt-16">
-    <NavItem item="About" />
+  <ul class="mt-16 flex gap-x-3 items-center">
+    <NavItem
+      item="About"
+      selected={true}
+    />
     <NavItem item="Experience" />
     <NavItem item="Projects" />
     <NavItem item="Contact" />
