@@ -1,0 +1,35 @@
+---
+import fetchApi from '@lib/strapi'
+import type HeadingInfos from '@interfaces/headingInfos'
+import { Debug } from 'astro:components'
+
+const headingInfos = await fetchApi<HeadingInfos[]>({
+  endpoint: 'heading-infos',
+  wrappedByKey: 'data'
+})
+
+const info = headingInfos[0]
+---
+
+<header class="introduction">
+  <div>
+    <h1 class="capitalize max-w-xs">{info.name}</h1>
+    <h2 class="mt-3">{info.position}</h2>
+    <span class="mt-3 max-w-xs">{info.introduction}</span>
+  </div>
+  <nav>
+    <ul>
+      <li>
+        <a href="#about">About</a>
+      </li>
+      <li>
+        <a href="#projects">Experience</a>
+      </li>
+      <li>
+        <a href="#contact">Contact</a>
+      </li>
+    </ul>
+    <ul>
+		</ul>
+  </nav>
+</header>
