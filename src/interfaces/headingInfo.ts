@@ -1,5 +1,4 @@
-export default interface HeadingInfos {
-  id: number
+export default interface HeadingInfo {
   name: string
   position: string
   introduction: string
